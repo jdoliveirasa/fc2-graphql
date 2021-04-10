@@ -1,0 +1,69 @@
+mutation createCategory {
+  createCategory(input:{name:"PHP", description:"PHP is awesome"}) {
+    id
+    name
+    description
+  }
+}
+
+mutation createCourse {
+  createCourse(
+    input:{
+      name:"Envolving with PHP", 
+      description:"Mega PHP is awesome",
+      categoryId: "T5577006791947779410"
+  	}
+  ) {
+    id
+    name
+    description
+    category {
+      id
+      name
+    }
+  }
+}
+
+query findCategories {
+    categories {
+      id
+      name
+      description
+      courses {
+        id
+        name
+        description
+      }      
+    }
+}
+
+query findCourses {
+    courses {
+      id
+      name
+      description 
+      chapters {
+        id
+        name
+      }
+      category {
+        name
+      }     
+    }
+}
+
+mutation createChapter {
+  createChapter(
+    input:{
+      name:"Envolving PHP - Chapter 1",
+      CourseId: "T8674665223082153551"
+  	}
+  ) {
+    id
+    name
+    
+    course {      
+      name
+    }
+  }
+}
